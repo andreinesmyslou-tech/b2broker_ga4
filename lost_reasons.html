@@ -6,8 +6,12 @@
 <title>B2Broker - Lost Reasons Report</title>
 <style>
 body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:#f1f5f9; color:#0f172a; margin:0; padding:20px; }
-.container { max-width:1100px; margin:0 auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
-h1 { font-size:26px; margin:0 0 4px 0; color:#0f172a; }
+.container { max-width:1100px; margin:0 auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.06); position:relative; }
+.lang-toggle { position:absolute; top:24px; right:24px; }
+.lang-toggle-inner { display:inline-flex; background:#f1f5f9; border-radius:6px; padding:2px; }
+.lang-btn { padding:5px 14px; border:none; background:transparent; color:#475569; font-weight:600; font-size:12px; cursor:pointer; border-radius:4px; }
+.lang-btn.active { background:#1e40af; color:#fff; }
+h1 { font-size:26px; margin:0 0 4px 0; color:#0f172a; padding-right:120px; }
 h1 .brand { color:#1e40af; }
 h1 .brand-green { color:#059669; }
 .period { color:#475569; font-size:14px; margin-bottom:24px; }
@@ -33,59 +37,113 @@ tr:hover { background:#f8fafc; }
 </head>
 <body>
 <div class="container">
-  <h1><span class="brand">B2</span><span class="brand-green">BROKER</span> &mdash; Lost Reasons Report</h1>
-  <div class="period">Period: 2026-01-01 -- 2026-04-27 (year-to-date)</div>
+  <div class="lang-toggle">
+    <div class="lang-toggle-inner">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+  <h1><span class="brand">B2</span><span class="brand-green">BROKER</span> &mdash; <span data-en="Lost Reasons Report" data-ru="&#1054;&#1090;&#1095;&#1105;&#1090; &#1087;&#1086; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072;&#1084; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1080;&#1103; &#1089;&#1076;&#1077;&#1083;&#1086;&#1082;">Lost Reasons Report</span></h1>
+  <div class="period"><span data-en="Period:" data-ru="&#1055;&#1077;&#1088;&#1080;&#1086;&#1076;:">Period:</span> 2026-01-01 -- 2026-04-27 (year-to-date)</div>
 
   <div class="note">
-    <strong>What this report shows:</strong> distribution of lost / disqualified leads and deals by reason.
-    <b>Closed Lost</b> = deals (opportunities) that reached the negotiation stage and were lost; they have a populated <code>Lost Reason</code> field.
-    <b>Disqualified</b> = leads filtered out before the deal stage; they don't have <code>Lost Reason</code>, but we show them by AI Lead Score and Prior Status.
-    Source: Roistat / Salesforce CRM, project 187940. All numbers reflect orders with <code>update_date</code> in the period.
+    <strong data-en="What this report shows:" data-ru="&#1063;&#1090;&#1086; &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1086;&#1090;&#1095;&#1105;&#1090;:">What this report shows:</strong>
+    <span data-en=" Distribution of lost / disqualified leads and deals by reason. Closed Lost = deals (opportunities) that reached the negotiation stage and were lost; they have a populated Lost Reason field. Disqualified = leads filtered out before the deal stage; they don't have Lost Reason, but we show them by AI Lead Score and Prior Status. Source: Roistat / Salesforce CRM, project 187940. All numbers reflect orders with update_date in the period." data-ru=" &#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1085;&#1099;&#1093; / &#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1093; &#1083;&#1080;&#1076;&#1086;&#1074; &#1080; &#1089;&#1076;&#1077;&#1083;&#1086;&#1082; &#1087;&#1086; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072;&#1084;. Closed Lost = &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;, &#1076;&#1086;&#1096;&#1077;&#1076;&#1096;&#1080;&#1077; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1087;&#1077;&#1088;&#1077;&#1075;&#1086;&#1074;&#1086;&#1088;&#1086;&#1074; &#1080; &#1087;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1085;&#1099;&#1077;; &#1080;&#1084;&#1077;&#1102;&#1090; &#1079;&#1072;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1085;&#1086;&#1077; &#1087;&#1086;&#1083;&#1077; Lost Reason. Disqualified = &#1083;&#1080;&#1076;&#1099;, &#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1077; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;; &#1091; &#1085;&#1080;&#1093; &#1085;&#1077;&#1090; Lost Reason, &#1085;&#1086; &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1084; &#1080;&#1093; &#1087;&#1086; AI Lead Score &#1080; Prior Status. &#1048;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;: Roistat / Salesforce CRM, &#1087;&#1088;&#1086;&#1077;&#1082;&#1090; 187940."></span>
   </div>
 
   <div class="kpi-grid">
     <div class="kpi">
-      <div class="lbl">Closed Lost deals</div>
+      <div class="lbl" data-en="Closed Lost deals" data-ru="Closed Lost &#1089;&#1076;&#1077;&#1083;&#1086;&#1082;">Closed Lost deals</div>
       <div class="val">233</div>
-      <div class="sub">deals lost in negotiation</div>
+      <div class="sub" data-en="deals lost in negotiation" data-ru="&#1087;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1099; &#1085;&#1072; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1087;&#1077;&#1088;&#1077;&#1075;&#1086;&#1074;&#1086;&#1088;&#1086;&#1074;">deals lost in negotiation</div>
     </div>
     <div class="kpi" style="border-left-color:#dc2626">
-      <div class="lbl">Lost revenue (sum)</div>
+      <div class="lbl" data-en="Lost revenue (sum)" data-ru="&#1059;&#1087;&#1091;&#1097;&#1077;&#1085;&#1085;&#1099;&#1081; &#1076;&#1086;&#1093;&#1086;&#1076; (&#1089;&#1091;&#1084;&#1084;&#1072;)">Lost revenue (sum)</div>
       <div class="val">$1,007,750</div>
-      <div class="sub">opportunity amount of Closed Lost</div>
+      <div class="sub" data-en="opportunity amount of Closed Lost" data-ru="&#1089;&#1091;&#1084;&#1084;&#1072; opportunity amount &#1087;&#1086; Closed Lost">opportunity amount of Closed Lost</div>
     </div>
     <div class="kpi" style="border-left-color:#d97706">
-      <div class="lbl">Disqualified leads</div>
+      <div class="lbl" data-en="Disqualified leads" data-ru="Disqualified &#1083;&#1080;&#1076;&#1086;&#1074;">Disqualified leads</div>
       <div class="val">157</div>
-      <div class="sub">filtered out before deal stage</div>
+      <div class="sub" data-en="filtered out before deal stage" data-ru="&#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1072;&#1085;&#1099; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;">filtered out before deal stage</div>
     </div>
   </div>
 
-  <h2>Closed Lost by Lost Reason</h2>
+  <h2 data-en="Closed Lost by Lost Reason" data-ru="Closed Lost &#1087;&#1086; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072;&#1084; (Lost Reason)">Closed Lost by Lost Reason</h2>
   <table>
-    <tr><th>Lost Reason</th><th class="num">Deals</th><th class="num">% of lost</th><th class="num">Amount</th><th class="num">% of $</th><th>Distribution</th></tr>
-    <tr><td>Operational / Administrative Closure</td><td class='num'>99</td><td class='num'>42.5%</td><td class='num'>$276,750</td><td class='num'>27.5%</td><td><div class='bar'><div class='fill' style='width:42.5%'></div></div></td></tr><tr><td>No Decision / Status Quo Maintained</td><td class='num'>44</td><td class='num'>18.9%</td><td class='num'>$279,000</td><td class='num'>27.7%</td><td><div class='bar'><div class='fill' style='width:18.9%'></div></div></td></tr><tr><td>Change in Priorities / Resources</td><td class='num'>34</td><td class='num'>14.6%</td><td class='num'>$104,000</td><td class='num'>10.3%</td><td><div class='bar'><div class='fill' style='width:14.6%'></div></div></td></tr><tr><td>Product Misalignment</td><td class='num'>14</td><td class='num'>6%</td><td class='num'>$132,000</td><td class='num'>13.1%</td><td><div class='bar'><div class='fill' style='width:6%'></div></div></td></tr><tr><td>Budget Constraints</td><td class='num'>12</td><td class='num'>5.2%</td><td class='num'>$15,000</td><td class='num'>1.5%</td><td><div class='bar'><div class='fill' style='width:5.2%'></div></div></td></tr><tr><td>Pricing / Value Concerns</td><td class='num'>10</td><td class='num'>4.3%</td><td class='num'>$150,500</td><td class='num'>14.9%</td><td><div class='bar'><div class='fill' style='width:4.3%'></div></div></td></tr><tr><td>Selected Competitor / Existing Vendor</td><td class='num'>7</td><td class='num'>3%</td><td class='num'>$35,500</td><td class='num'>3.5%</td><td><div class='bar'><div class='fill' style='width:3%'></div></div></td></tr><tr><td>Duplicate Opportunity</td><td class='num'>6</td><td class='num'>2.6%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:2.6%'></div></div></td></tr><tr><td>Lack of business case/need</td><td class='num'>3</td><td class='num'>1.3%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:1.3%'></div></div></td></tr><tr><td>Satisfied with current solution</td><td class='num'>2</td><td class='num'>0.9%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:0.9%'></div></div></td></tr><tr><td>No Internal Capacity</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr><tr><td>Budget</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr>
+    <tr>
+      <th data-en="Lost Reason" data-ru="&#1055;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072; (Lost Reason)">Lost Reason</th>
+      <th class="num" data-en="Deals" data-ru="&#1057;&#1076;&#1077;&#1083;&#1086;&#1082;">Deals</th>
+      <th class="num" data-en="% of lost" data-ru="% &#1086;&#1090; &#1087;&#1086;&#1090;&#1077;&#1088;&#1100;">% of lost</th>
+      <th class="num" data-en="Amount" data-ru="&#1057;&#1091;&#1084;&#1084;&#1072;">Amount</th>
+      <th class="num" data-en="% of $" data-ru="% &#1086;&#1090; $">% of $</th>
+      <th data-en="Distribution" data-ru="&#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077;">Distribution</th>
+    </tr>
+    <tr><td><span data-en="Operational / Administrative Closure" data-ru="&#1054;&#1087;&#1077;&#1088;&#1072;&#1094;&#1080;&#1086;&#1085;&#1085;&#1086;&#1077; / &#1072;&#1076;&#1084;&#1080;&#1085;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1080;&#1074;&#1085;&#1086;&#1077; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1080;&#1077;">Operational / Administrative Closure</span></td><td class='num'>99</td><td class='num'>42.5%</td><td class='num'>$276,750</td><td class='num'>27.5%</td><td><div class='bar'><div class='fill' style='width:42.5%'></div></div></td></tr>
+<tr><td><span data-en="No Decision / Status Quo Maintained" data-ru="&#1041;&#1077;&#1079; &#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1103; / &#1057;&#1090;&#1072;&#1090;&#1091;&#1089;-&#1082;&#1074;&#1086;">No Decision / Status Quo Maintained</span></td><td class='num'>44</td><td class='num'>18.9%</td><td class='num'>$279,000</td><td class='num'>27.7%</td><td><div class='bar'><div class='fill' style='width:18.9%'></div></div></td></tr>
+<tr><td><span data-en="Change in Priorities / Resources" data-ru="&#1057;&#1084;&#1077;&#1085;&#1072; &#1087;&#1088;&#1080;&#1086;&#1088;&#1080;&#1090;&#1077;&#1090;&#1086;&#1074; / &#1088;&#1077;&#1089;&#1091;&#1088;&#1089;&#1086;&#1074;">Change in Priorities / Resources</span></td><td class='num'>34</td><td class='num'>14.6%</td><td class='num'>$104,000</td><td class='num'>10.3%</td><td><div class='bar'><div class='fill' style='width:14.6%'></div></div></td></tr>
+<tr><td><span data-en="Product Misalignment" data-ru="&#1053;&#1077;&#1089;&#1086;&#1086;&#1090;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1080;&#1077; &#1087;&#1088;&#1086;&#1076;&#1091;&#1082;&#1090;&#1072;">Product Misalignment</span></td><td class='num'>14</td><td class='num'>6%</td><td class='num'>$132,000</td><td class='num'>13.1%</td><td><div class='bar'><div class='fill' style='width:6%'></div></div></td></tr>
+<tr><td><span data-en="Budget Constraints" data-ru="&#1054;&#1075;&#1088;&#1072;&#1085;&#1080;&#1095;&#1077;&#1085;&#1080;&#1103; &#1073;&#1102;&#1076;&#1078;&#1077;&#1090;&#1072;">Budget Constraints</span></td><td class='num'>12</td><td class='num'>5.2%</td><td class='num'>$15,000</td><td class='num'>1.5%</td><td><div class='bar'><div class='fill' style='width:5.2%'></div></div></td></tr>
+<tr><td><span data-en="Pricing / Value Concerns" data-ru="&#1062;&#1077;&#1085;&#1072; / &#1089;&#1086;&#1086;&#1090;&#1085;&#1086;&#1096;&#1077;&#1085;&#1080;&#1077; &#1094;&#1077;&#1085;&#1099;-&#1094;&#1077;&#1085;&#1085;&#1086;&#1089;&#1090;&#1080;">Pricing / Value Concerns</span></td><td class='num'>10</td><td class='num'>4.3%</td><td class='num'>$150,500</td><td class='num'>14.9%</td><td><div class='bar'><div class='fill' style='width:4.3%'></div></div></td></tr>
+<tr><td><span data-en="Selected Competitor / Existing Vendor" data-ru="&#1042;&#1099;&#1073;&#1088;&#1072;&#1083; &#1082;&#1086;&#1085;&#1082;&#1091;&#1088;&#1077;&#1085;&#1090;&#1072; / &#1090;&#1077;&#1082;&#1091;&#1097;&#1077;&#1075;&#1086; &#1074;&#1077;&#1085;&#1076;&#1086;&#1088;&#1072;">Selected Competitor / Existing Vendor</span></td><td class='num'>7</td><td class='num'>3%</td><td class='num'>$35,500</td><td class='num'>3.5%</td><td><div class='bar'><div class='fill' style='width:3%'></div></div></td></tr>
+<tr><td><span data-en="Duplicate Opportunity" data-ru="&#1044;&#1091;&#1073;&#1083;&#1080;&#1088;&#1091;&#1102;&#1097;&#1072;&#1103; &#1089;&#1076;&#1077;&#1083;&#1082;&#1072;">Duplicate Opportunity</span></td><td class='num'>6</td><td class='num'>2.6%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:2.6%'></div></div></td></tr>
+<tr><td><span data-en="Lack of business case/need" data-ru="&#1053;&#1077;&#1090; business case/&#1085;&#1077;&#1086;&#1073;&#1093;&#1086;&#1076;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080;">Lack of business case/need</span></td><td class='num'>3</td><td class='num'>1.3%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:1.3%'></div></div></td></tr>
+<tr><td><span data-en="Satisfied with current solution" data-ru="&#1059;&#1089;&#1090;&#1088;&#1072;&#1080;&#1074;&#1072;&#1077;&#1090; &#1090;&#1077;&#1082;&#1091;&#1097;&#1077;&#1077; &#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1077;">Satisfied with current solution</span></td><td class='num'>2</td><td class='num'>0.9%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:0.9%'></div></div></td></tr>
+<tr><td><span data-en="No Internal Capacity" data-ru="&#1053;&#1077;&#1090; &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1080;&#1093; &#1088;&#1077;&#1089;&#1091;&#1088;&#1089;&#1086;&#1074;">No Internal Capacity</span></td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr>
+<tr><td><span data-en="Budget" data-ru="&#1041;&#1102;&#1076;&#1078;&#1077;&#1090;">Budget</span></td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr>
+
   </table>
 
-  <h2>Disqualified Leads &mdash; AI Lead Score breakdown</h2>
+  <h2 data-en="Disqualified Leads &mdash; AI Lead Score breakdown" data-ru="Disqualified &mdash; &#1088;&#1072;&#1079;&#1073;&#1080;&#1074;&#1082;&#1072; &#1087;&#1086; AI Lead Score">Disqualified Leads -- AI Lead Score breakdown</h2>
   <table>
-    <tr><th>AI Score</th><th class="num">Count</th><th class="num">% of DQ</th></tr>
-    <tr><td><span class='badge' style='background:#64748b'>(none)</span></td><td class='num'>124</td><td class='num'>79%</td></tr><tr><td><span class='badge' style='background:#dc2626'>SPAM</span></td><td class='num'>22</td><td class='num'>14%</td></tr><tr><td><span class='badge' style='background:#d97706'>COLD</span></td><td class='num'>11</td><td class='num'>7%</td></tr>
+    <tr>
+      <th data-en="AI Score" data-ru="AI &#1086;&#1094;&#1077;&#1085;&#1082;&#1072;">AI Score</th>
+      <th class="num" data-en="Count" data-ru="&#1050;&#1086;&#1083;-&#1074;&#1086;">Count</th>
+      <th class="num" data-en="% of DQ" data-ru="% &#1086;&#1090; DQ">% of DQ</th>
+    </tr>
+    <tr><td><span class='badge' style='background:#64748b'><span data-en="(none)" data-ru="(&#1085;&#1077; &#1086;&#1094;&#1077;&#1085;&#1077;&#1085;&#1086;)">(none)</span></span></td><td class='num'>124</td><td class='num'>79%</td></tr>
+<tr><td><span class='badge' style='background:#dc2626'><span data-en="SPAM" data-ru="SPAM">SPAM</span></span></td><td class='num'>22</td><td class='num'>14%</td></tr>
+<tr><td><span class='badge' style='background:#d97706'><span data-en="COLD" data-ru="COLD">COLD</span></span></td><td class='num'>11</td><td class='num'>7%</td></tr>
+
   </table>
 
-  <h2>Disqualified Leads &mdash; Prior Status (where they were rejected)</h2>
+  <h2 data-en="Disqualified Leads &mdash; Prior Status (where they were rejected)" data-ru="Disqualified &mdash; Prior Status (&#1075;&#1076;&#1077; &#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1072;&#1085;&#1099;)">Disqualified Leads -- Prior Status</h2>
   <table>
-    <tr><th>Prior Status</th><th class="num">Count</th><th class="num">% of DQ</th></tr>
-    <tr><td>Outreach</td><td class='num'>76</td><td class='num'>48.4%</td></tr><tr><td>New</td><td class='num'>49</td><td class='num'>31.2%</td></tr><tr><td>Conversation</td><td class='num'>23</td><td class='num'>14.6%</td></tr><tr><td>Nurturing</td><td class='num'>8</td><td class='num'>5.1%</td></tr><tr><td>Negotiations</td><td class='num'>1</td><td class='num'>0.6%</td></tr>
+    <tr>
+      <th data-en="Prior Status" data-ru="Prior Status">Prior Status</th>
+      <th class="num" data-en="Count" data-ru="&#1050;&#1086;&#1083;-&#1074;&#1086;">Count</th>
+      <th class="num" data-en="% of DQ" data-ru="% &#1086;&#1090; DQ">% of DQ</th>
+    </tr>
+    <tr><td><span data-en="Outreach" data-ru="Outreach (&#1087;&#1077;&#1088;&#1074;&#1099;&#1081; &#1082;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;)">Outreach</span></td><td class='num'>76</td><td class='num'>48.4%</td></tr>
+<tr><td><span data-en="New" data-ru="New (&#1085;&#1086;&#1074;&#1099;&#1081;)">New</span></td><td class='num'>49</td><td class='num'>31.2%</td></tr>
+<tr><td><span data-en="Conversation" data-ru="Conversation (&#1076;&#1080;&#1072;&#1083;&#1086;&#1075;)">Conversation</span></td><td class='num'>23</td><td class='num'>14.6%</td></tr>
+<tr><td><span data-en="Nurturing" data-ru="Nurturing (&#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1074;)">Nurturing</span></td><td class='num'>8</td><td class='num'>5.1%</td></tr>
+<tr><td><span data-en="Negotiations" data-ru="Negotiations (&#1087;&#1077;&#1088;&#1077;&#1075;&#1086;&#1074;&#1086;&#1088;&#1099;)">Negotiations</span></td><td class='num'>1</td><td class='num'>0.6%</td></tr>
+
   </table>
 
   <div class="summary-box">
-    <strong>How to read this</strong>
-    The largest "Lost Reason" bucket points to the most actionable systemic problem. "Operational / Administrative Closure" usually means the deal died for non-business reasons (compliance, doc issues, internal process). "Budget Constraints" / "Selected Competitor" point to pricing or positioning. "No Decision / Status Quo" suggests sales-cycle pressure or weak business case.
-    Disqualified-by-AI-Score shows how many leads the AI screen catches as SPAM/COLD; if (none) is the largest bucket, AI scoring is not consistently filled. Disqualified-by-Prior-Status shows where in the funnel they fell out.
+    <strong data-en="How to read this" data-ru="&#1050;&#1072;&#1082; &#1095;&#1080;&#1090;&#1072;&#1090;&#1100; &#1101;&#1090;&#1086;&#1090; &#1086;&#1090;&#1095;&#1105;&#1090;">How to read this</strong>
+    <span data-en="The largest 'Lost Reason' bucket points to the most actionable systemic problem. 'Operational / Administrative Closure' usually means the deal died for non-business reasons (compliance, doc issues, internal process). 'Budget Constraints' / 'Selected Competitor' point to pricing or positioning. 'No Decision / Status Quo' suggests sales-cycle pressure or weak business case. Disqualified-by-AI-Score shows how many leads the AI screen catches as SPAM/COLD; if (none) is the largest bucket, AI scoring is not consistently filled. Disqualified-by-Prior-Status shows where in the funnel they fell out." data-ru="&#1057;&#1072;&#1084;&#1099;&#1081; &#1082;&#1088;&#1091;&#1087;&#1085;&#1099;&#1081; &#1073;&#1083;&#1086;&#1082; Lost Reason &#1091;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1085;&#1072; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1091;&#1102; &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084;&#1091;. 'Operational / Administrative Closure' &#1086;&#1073;&#1099;&#1095;&#1085;&#1086; &#1079;&#1085;&#1072;&#1095;&#1080;&#1090;: &#1089;&#1076;&#1077;&#1083;&#1082;&#1072; &#1091;&#1084;&#1077;&#1088;&#1083;&#1072; &#1087;&#1086; &#1085;&#1077;-&#1073;&#1080;&#1079;&#1085;&#1077;&#1089; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072;&#1084; (&#1082;&#1086;&#1084;&#1087;&#1083;&#1072;&#1077;&#1085;&#1089;, &#1076;&#1086;&#1082;&#1080;, &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1080;&#1081; &#1087;&#1088;&#1086;&#1094;&#1077;&#1089;&#1089;). 'Budget Constraints' / 'Selected Competitor' &#1075;&#1086;&#1074;&#1086;&#1088;&#1080;&#1090; &#1086; &#1094;&#1077;&#1085;&#1077; &#1080;&#1083;&#1080; &#1087;&#1086;&#1079;&#1080;&#1094;&#1080;&#1086;&#1085;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1080;. 'No Decision / Status Quo' &#1086;&#1079;&#1085;&#1072;&#1095;&#1072;&#1077;&#1090; &#1089;&#1083;&#1072;&#1073;&#1099;&#1081; business case &#1080;&#1083;&#1080; &#1076;&#1086;&#1083;&#1075;&#1080;&#1081; &#1094;&#1080;&#1082;&#1083; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;. AI Score &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1089;&#1082;&#1086;&#1083;&#1100;&#1082;&#1086; &#1083;&#1080;&#1076;&#1086;&#1074; AI-&#1092;&#1080;&#1083;&#1100;&#1090;&#1088; &#1083;&#1086;&#1074;&#1080;&#1090; &#1082;&#1072;&#1082; SPAM/COLD; &#1077;&#1089;&#1083;&#1080; (&#1085;&#1077; &#1086;&#1094;&#1077;&#1085;&#1077;&#1085;&#1086;) -- &#1089;&#1072;&#1084;&#1099;&#1081; &#1073;&#1086;&#1083;&#1100;&#1096;&#1086;&#1081; &#1073;&#1083;&#1086;&#1082;, &#1079;&#1085;&#1072;&#1095;&#1080;&#1090; AI-&#1086;&#1094;&#1077;&#1085;&#1082;&#1072; &#1085;&#1077; &#1079;&#1072;&#1087;&#1086;&#1083;&#1085;&#1103;&#1077;&#1090;&#1089;&#1103; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1086;. Prior Status &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090;, &#1085;&#1072; &#1082;&#1072;&#1082;&#1086;&#1081; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1074;&#1086;&#1088;&#1086;&#1085;&#1082;&#1080; &#1083;&#1080;&#1076;&#1099; &#1086;&#1090;&#1074;&#1072;&#1083;&#1080;&#1083;&#1080;&#1089;&#1100;."></span>
   </div>
 
-  <div class="footer">Generated 2026-04-27 14:58 &middot; Roistat project 187940 &middot; Salesforce CRM source</div>
+  <div class="footer"><span data-en="Generated" data-ru="&#1057;&#1075;&#1077;&#1085;&#1077;&#1088;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1086;">Generated</span> 2026-04-27 15:05 &middot; Roistat project 187940 &middot; Salesforce CRM</div>
 </div>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  });
+  localStorage.setItem('b2broker_lang', lang);
+}
+(function() {
+  var saved = localStorage.getItem('b2broker_lang') || 'en';
+  setLang(saved);
+})();
+</script>
 </body>
 </html>
