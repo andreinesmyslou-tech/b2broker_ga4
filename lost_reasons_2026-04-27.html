@@ -14,25 +14,25 @@ body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica
 h1 { font-size:26px; margin:0 0 4px 0; color:#0f172a; padding-right:120px; }
 h1 .brand { color:#1e40af; }
 h1 .brand-green { color:#059669; }
-.period { color:#475569; font-size:14px; margin-bottom:24px; }
-h2 { font-size:18px; color:#1e293b; border-bottom:2px solid #e2e8f0; padding-bottom:8px; margin:36px 0 16px 0; display:flex; align-items:baseline; gap:10px; }
-h2 .h2-count { font-size:13px; color:#64748b; font-weight:500; }
-.kpi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:30px; }
-.kpi { background:#f8fafc; border-left:4px solid #1e40af; padding:14px 16px; border-radius:8px; }
-.kpi .lbl { font-size:12px; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
-.kpi .val { font-size:28px; font-weight:700; color:#0f172a; margin-top:4px; }
-.kpi .sub { font-size:12px; color:#475569; margin-top:2px; }
+.period { color:#475569; font-size:14px; margin-bottom:18px; }
+.domains-line { color:#475569; font-size:11px; margin-bottom:24px; padding:8px 12px; background:#f8fafc; border-radius:6px; }
+.domains-line strong { color:#1e40af; }
+h2 { font-size:18px; color:#1e293b; border-bottom:2px solid #e2e8f0; padding-bottom:8px; margin:36px 0 16px 0; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:30px; }
+.kpi { background:#f8fafc; border-left:4px solid #1e40af; padding:12px 14px; border-radius:8px; }
+.kpi .lbl { font-size:11px; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
+.kpi .val { font-size:26px; font-weight:700; color:#0f172a; margin-top:4px; }
+.kpi .sub { font-size:11px; color:#475569; margin-top:2px; line-height:1.3; }
 table { width:100%; border-collapse:collapse; margin:16px 0 28px 0; font-size:13px; }
 th { background:#f1f5f9; text-align:left; padding:10px 12px; font-weight:600; color:#475569; border-bottom:2px solid #e2e8f0; }
 th.num, td.num { text-align:right; }
 td { padding:9px 12px; border-bottom:1px solid #f1f5f9; }
 tr:hover { background:#f8fafc; }
-.bar { width:160px; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; }
+.bar { width:200px; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; }
 .bar .fill { height:100%; border-radius:4px; }
 .fill-red    { background:linear-gradient(90deg,#dc2626,#ef4444); }
 .fill-orange { background:linear-gradient(90deg,#d97706,#f59e0b); }
 .fill-blue   { background:linear-gradient(90deg,#1e40af,#3b82f6); }
-.badge { display:inline-block; padding:2px 8px; border-radius:4px; color:#fff; font-size:11px; font-weight:600; }
 .note { background:#fef9c3; border-left:4px solid #ca8a04; padding:10px 14px; font-size:13px; border-radius:6px; color:#713f12; margin-bottom:20px; }
 .summary-box { background:#eff6ff; border-left:4px solid #2563eb; padding:14px 16px; border-radius:6px; margin-top:18px; font-size:14px; color:#1e3a8a; }
 .summary-box strong { display:block; margin-bottom:6px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; }
@@ -49,46 +49,55 @@ tr:hover { background:#f8fafc; }
   </div>
   <h1><span class="brand">B2</span><span class="brand-green">BROKER</span> &mdash; <span data-en="Lost Reasons Report" data-ru="&#1054;&#1090;&#1095;&#1105;&#1090; &#1087;&#1086; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1072;&#1084; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1080;&#1103;">Lost Reasons Report</span></h1>
   <div class="period"><span data-en="Period:" data-ru="&#1055;&#1077;&#1088;&#1080;&#1086;&#1076;:">Period:</span> 2026-01-01 -- 2026-04-27 (year-to-date)</div>
+  <div class="domains-line"><strong data-en="Domain whitelist:" data-ru="&#1060;&#1080;&#1083;&#1100;&#1090;&#1088; &#1076;&#1086;&#1084;&#1077;&#1085;&#1086;&#1074;:">Domain whitelist:</strong> b2broker.com, b2core.b2broker.com, eqwire.com, b2copy.b2broker.com, b2b.capital, b2bfintech.net, softtechnologies.net, lpflow.io, globalp.io, mena-technology.com, b2trader.b2broker.com, wsa.design, liquidity.b2broker.com, pop.b2broker.com, control.b2broker.com, b2prime.com</div>
 
   <div class="note">
-    <strong data-en="What this report shows:" data-ru="&#1063;&#1090;&#1086; &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1086;&#1090;&#1095;&#1105;&#1090;:">What this report shows:</strong>
-    <span data-en=" Distribution of Closed Lost leads and deals by Lost Reason. Leads (lead_*) and Deals (deal_*) are separate Salesforce entities -- a lead can be lost without ever becoming a deal. Disqualified leads are filtered out before the deal stage and don't have a Lost Reason field, so we show them by AI Lead Score and Prior Status. Source: Roistat / Salesforce CRM, project 187940. All numbers reflect orders with update_date in the period." data-ru=" &#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; Closed Lost &#1083;&#1080;&#1076;&#1086;&#1074; &#1080; &#1089;&#1076;&#1077;&#1083;&#1086;&#1082; &#1087;&#1086; Lost Reason. &#1051;&#1080;&#1076;&#1099; (lead_*) &#1080; &#1057;&#1076;&#1077;&#1083;&#1082;&#1080; (deal_*) -- &#1086;&#1090;&#1076;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1089;&#1091;&#1097;&#1085;&#1086;&#1089;&#1090;&#1080; &#1074; Salesforce, &#1083;&#1080;&#1076; &#1084;&#1086;&#1078;&#1077;&#1090; &#1073;&#1099;&#1090;&#1100; &#1087;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085; &#1077;&#1097;&#1105; &#1076;&#1086; &#1090;&#1086;&#1075;&#1086;, &#1082;&#1072;&#1082; &#1089;&#1090;&#1072;&#1085;&#1077;&#1090; &#1089;&#1076;&#1077;&#1083;&#1082;&#1086;&#1081;. Disqualified-&#1083;&#1080;&#1076;&#1099; &#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1099;&#1074;&#1072;&#1102;&#1090;&#1089;&#1103; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080; &#1080; &#1085;&#1077; &#1080;&#1084;&#1077;&#1102;&#1090; &#1087;&#1086;&#1083;&#1103; Lost Reason -- &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1084; &#1080;&#1093; &#1087;&#1086; AI Lead Score &#1080; Prior Status. &#1048;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;: Roistat / Salesforce CRM, &#1087;&#1088;&#1086;&#1077;&#1082;&#1090; 187940."></span>
+    <strong data-en="Methodology:" data-ru="&#1052;&#1077;&#1090;&#1086;&#1076;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103;:">Methodology:</strong>
+    <span data-en=" Leads (status lead_Lost) use the Close Lead Reason field; Deals (status deal_Closed Lost) use Lost Reason -- different Salesforce entities. Domain attribution: first try o.page (visit URL), if empty fall back to Website Form custom field. Records with no domain attribution are skipped (counted in 'no attribution' KPI). Source: Roistat / Salesforce CRM, project 187940." data-ru=" &#1051;&#1080;&#1076;&#1099; (status lead_Lost) -- &#1087;&#1086;&#1083;&#1077; Close Lead Reason; &#1057;&#1076;&#1077;&#1083;&#1082;&#1080; (status deal_Closed Lost) -- &#1087;&#1086;&#1083;&#1077; Lost Reason -- &#1088;&#1072;&#1079;&#1085;&#1099;&#1077; &#1089;&#1091;&#1097;&#1085;&#1086;&#1089;&#1090;&#1080; Salesforce. &#1040;&#1090;&#1088;&#1080;&#1073;&#1091;&#1094;&#1080;&#1103; &#1076;&#1086;&#1084;&#1077;&#1085;&#1072;: &#1089;&#1085;&#1072;&#1095;&#1072;&#1083;&#1072; &#1080;&#1079; o.page (URL &#1074;&#1080;&#1079;&#1080;&#1090;&#1072;), &#1077;&#1089;&#1083;&#1080; &#1087;&#1091;&#1089;&#1090;&#1086; -- &#1080;&#1079; &#1087;&#1086;&#1083;&#1103; Website Form. &#1047;&#1072;&#1087;&#1080;&#1089;&#1080; &#1073;&#1077;&#1079; &#1076;&#1086;&#1084;&#1077;&#1085;&#1072; &#1087;&#1088;&#1086;&#1087;&#1091;&#1089;&#1082;&#1072;&#1102;&#1090;&#1089;&#1103; (&#1089;&#1095;&#1080;&#1090;&#1072;&#1102;&#1090;&#1089;&#1103; &#1074; KPI 'no attribution'). &#1048;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;: Roistat / Salesforce CRM, &#1087;&#1088;&#1086;&#1077;&#1082;&#1090; 187940."></span>
   </div>
 
   <div class="kpi-grid">
     <div class="kpi" style="border-left-color:#d97706">
-      <div class="lbl" data-en="Leads &mdash; Closed Lost" data-ru="&#1051;&#1080;&#1076;&#1099; &mdash; Closed Lost">Leads -- Closed Lost</div>
-      <div class="val">28</div>
-      <div class="sub" data-en="leads closed with a Lost Reason" data-ru="&#1083;&#1080;&#1076;&#1086;&#1074;, &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1099;&#1093; &#1089; Lost Reason">leads closed with a Lost Reason</div>
+      <div class="lbl" data-en="Leads Lost" data-ru="&#1051;&#1080;&#1076;&#1099; Lost">Leads Lost</div>
+      <div class="val">1761</div>
+      <div class="sub" data-en="status lead_Lost with Close Lead Reason" data-ru="status lead_Lost &#1089; Close Lead Reason">status lead_Lost</div>
     </div>
     <div class="kpi" style="border-left-color:#dc2626">
-      <div class="lbl" data-en="Deals &mdash; Closed Lost" data-ru="&#1057;&#1076;&#1077;&#1083;&#1082;&#1080; &mdash; Closed Lost">Deals -- Closed Lost</div>
-      <div class="val">205</div>
-      <div class="sub" data-en="opportunities closed with a Lost Reason" data-ru="&#1089;&#1076;&#1077;&#1083;&#1086;&#1082;, &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1099;&#1093; &#1089; Lost Reason">opportunities closed with a Lost Reason</div>
+      <div class="lbl" data-en="Deals Closed Lost" data-ru="&#1057;&#1076;&#1077;&#1083;&#1082;&#1080; Closed Lost">Deals Closed Lost</div>
+      <div class="val">18</div>
+      <div class="sub" data-en="status deal_Closed Lost with Lost Reason" data-ru="status deal_Closed Lost &#1089; Lost Reason">status deal_Closed Lost</div>
     </div>
     <div class="kpi" style="border-left-color:#1e40af">
-      <div class="lbl" data-en="Disqualified leads" data-ru="Disqualified &#1083;&#1080;&#1076;&#1086;&#1074;">Disqualified leads</div>
-      <div class="val">157</div>
+      <div class="lbl" data-en="Leads Disqualified" data-ru="&#1051;&#1080;&#1076;&#1099; Disqualified">Leads Disqualified</div>
+      <div class="val">123</div>
       <div class="sub" data-en="filtered out before deal stage" data-ru="&#1086;&#1090;&#1073;&#1088;&#1072;&#1082;&#1086;&#1074;&#1072;&#1085;&#1099; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;">filtered out before deal stage</div>
+    </div>
+    <div class="kpi" style="border-left-color:#94a3b8">
+      <div class="lbl" data-en="No attribution" data-ru="&#1041;&#1077;&#1079; &#1072;&#1090;&#1088;&#1080;&#1073;&#1091;&#1094;&#1080;&#1080;">No attribution</div>
+      <div class="val">2522</div>
+      <div class="sub" data-en="lost orders skipped (no domain match)" data-ru="&#1085;&#1077; &#1087;&#1086;&#1076;&#1086;&#1096;&#1083;&#1080; &#1087;&#1086;&#1076; &#1092;&#1080;&#1083;&#1100;&#1090;&#1088; &#1076;&#1086;&#1084;&#1077;&#1085;&#1086;&#1074;">lost orders skipped (no domain match)</div>
     </div>
   </div>
 
-  <h2 data-en="Leads Closed Lost &mdash; by Lost Reason" data-ru="&#1051;&#1080;&#1076;&#1099; Closed Lost &mdash; &#1087;&#1086; Lost Reason">Leads Closed Lost -- by Lost Reason</h2>
+  <h2 data-en="Leads Lost &mdash; by Close Lead Reason" data-ru="&#1051;&#1080;&#1076;&#1099; Lost &mdash; &#1087;&#1086; Close Lead Reason">Leads Lost -- by Close Lead Reason</h2>
   <table>
     <tr>
-      <th data-en="Lost Reason" data-ru="Lost Reason">Lost Reason</th>
+      <th data-en="Close Lead Reason" data-ru="Close Lead Reason">Close Lead Reason</th>
       <th class="num" data-en="Leads" data-ru="&#1051;&#1080;&#1076;&#1086;&#1074;">Leads</th>
-      <th class="num" data-en="% of leads CL" data-ru="% &#1086;&#1090; &#1083;&#1080;&#1076;&#1086;&#1074; CL">% of leads CL</th>
+      <th class="num" data-en="% of total" data-ru="% &#1086;&#1090; &#1074;&#1089;&#1077;&#1093;">% of total</th>
       <th data-en="Distribution" data-ru="&#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077;">Distribution</th>
     </tr>
-    <tr><td>Operational / Administrative Closure</td><td class='num'>10</td><td class='num'>35.7%</td><td><div class='bar'><div class='fill fill-orange' style='width:35.7%'></div></div></td></tr>
-<tr><td>No Decision / Status Quo Maintained</td><td class='num'>6</td><td class='num'>21.4%</td><td><div class='bar'><div class='fill fill-orange' style='width:21.4%'></div></div></td></tr>
-<tr><td>Product Misalignment</td><td class='num'>3</td><td class='num'>10.7%</td><td><div class='bar'><div class='fill fill-orange' style='width:10.7%'></div></div></td></tr>
-<tr><td>Change in Priorities / Resources</td><td class='num'>3</td><td class='num'>10.7%</td><td><div class='bar'><div class='fill fill-orange' style='width:10.7%'></div></div></td></tr>
-<tr><td>Selected Competitor / Existing Vendor</td><td class='num'>2</td><td class='num'>7.1%</td><td><div class='bar'><div class='fill fill-orange' style='width:7.1%'></div></div></td></tr>
-<tr><td>Budget Constraints</td><td class='num'>2</td><td class='num'>7.1%</td><td><div class='bar'><div class='fill fill-orange' style='width:7.1%'></div></div></td></tr>
-<tr><td>Pricing / Value Concerns</td><td class='num'>1</td><td class='num'>3.6%</td><td><div class='bar'><div class='fill fill-orange' style='width:3.6%'></div></div></td></tr>
-<tr><td>Lack of business case/need</td><td class='num'>1</td><td class='num'>3.6%</td><td><div class='bar'><div class='fill fill-orange' style='width:3.6%'></div></div></td></tr>
+    <tr><td>Product or Service Mismatch</td><td class='num'>737</td><td class='num'>41.9%</td><td><div class='bar'><div class='fill fill-orange' style='width:41.9%'></div></div></td></tr>
+<tr><td>Non-ICP / Spam Rejected</td><td class='num'>312</td><td class='num'>17.7%</td><td><div class='bar'><div class='fill fill-orange' style='width:17.7%'></div></div></td></tr>
+<tr><td>Invalid Contact Information</td><td class='num'>278</td><td class='num'>15.8%</td><td><div class='bar'><div class='fill fill-orange' style='width:15.8%'></div></div></td></tr>
+<tr><td>Do not Contact Request</td><td class='num'>272</td><td class='num'>15.4%</td><td><div class='bar'><div class='fill fill-orange' style='width:15.4%'></div></div></td></tr>
+<tr><td>Duplicate Lead</td><td class='num'>74</td><td class='num'>4.2%</td><td><div class='bar'><div class='fill fill-orange' style='width:4.2%'></div></div></td></tr>
+<tr><td>Irrelevant request</td><td class='num'>32</td><td class='num'>1.8%</td><td><div class='bar'><div class='fill fill-orange' style='width:1.8%'></div></div></td></tr>
+<tr><td>Competitor</td><td class='num'>23</td><td class='num'>1.3%</td><td><div class='bar'><div class='fill fill-orange' style='width:1.3%'></div></div></td></tr>
+<tr><td>Fake lead</td><td class='num'>15</td><td class='num'>0.9%</td><td><div class='bar'><div class='fill fill-orange' style='width:0.9%'></div></div></td></tr>
+<tr><td>(empty)</td><td class='num'>12</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill fill-orange' style='width:0.7%'></div></div></td></tr>
+<tr><td>Language</td><td class='num'>5</td><td class='num'>0.3%</td><td><div class='bar'><div class='fill fill-orange' style='width:0.3%'></div></div></td></tr>
+<tr><td>Not a Serious Buyer</td><td class='num'>1</td><td class='num'>0.1%</td><td><div class='bar'><div class='fill fill-orange' style='width:0.1%'></div></div></td></tr>
 
   </table>
 
@@ -97,58 +106,44 @@ tr:hover { background:#f8fafc; }
     <tr>
       <th data-en="Lost Reason" data-ru="Lost Reason">Lost Reason</th>
       <th class="num" data-en="Deals" data-ru="&#1057;&#1076;&#1077;&#1083;&#1086;&#1082;">Deals</th>
-      <th class="num" data-en="% of deals CL" data-ru="% &#1086;&#1090; &#1089;&#1076;&#1077;&#1083;&#1086;&#1082; CL">% of deals CL</th>
+      <th class="num" data-en="% of total" data-ru="% &#1086;&#1090; &#1074;&#1089;&#1077;&#1093;">% of total</th>
       <th data-en="Distribution" data-ru="&#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077;">Distribution</th>
     </tr>
-    <tr><td>Operational / Administrative Closure</td><td class='num'>89</td><td class='num'>43.4%</td><td><div class='bar'><div class='fill fill-red' style='width:43.4%'></div></div></td></tr>
-<tr><td>No Decision / Status Quo Maintained</td><td class='num'>38</td><td class='num'>18.5%</td><td><div class='bar'><div class='fill fill-red' style='width:18.5%'></div></div></td></tr>
-<tr><td>Change in Priorities / Resources</td><td class='num'>31</td><td class='num'>15.1%</td><td><div class='bar'><div class='fill fill-red' style='width:15.1%'></div></div></td></tr>
-<tr><td>Product Misalignment</td><td class='num'>11</td><td class='num'>5.4%</td><td><div class='bar'><div class='fill fill-red' style='width:5.4%'></div></div></td></tr>
-<tr><td>Budget Constraints</td><td class='num'>10</td><td class='num'>4.9%</td><td><div class='bar'><div class='fill fill-red' style='width:4.9%'></div></div></td></tr>
-<tr><td>Pricing / Value Concerns</td><td class='num'>9</td><td class='num'>4.4%</td><td><div class='bar'><div class='fill fill-red' style='width:4.4%'></div></div></td></tr>
-<tr><td>Duplicate Opportunity</td><td class='num'>6</td><td class='num'>2.9%</td><td><div class='bar'><div class='fill fill-red' style='width:2.9%'></div></div></td></tr>
-<tr><td>Selected Competitor / Existing Vendor</td><td class='num'>5</td><td class='num'>2.4%</td><td><div class='bar'><div class='fill fill-red' style='width:2.4%'></div></div></td></tr>
-<tr><td>Satisfied with current solution</td><td class='num'>2</td><td class='num'>1%</td><td><div class='bar'><div class='fill fill-red' style='width:1%'></div></div></td></tr>
-<tr><td>Lack of business case/need</td><td class='num'>2</td><td class='num'>1%</td><td><div class='bar'><div class='fill fill-red' style='width:1%'></div></div></td></tr>
-<tr><td>No Internal Capacity</td><td class='num'>1</td><td class='num'>0.5%</td><td><div class='bar'><div class='fill fill-red' style='width:0.5%'></div></div></td></tr>
-<tr><td>Budget</td><td class='num'>1</td><td class='num'>0.5%</td><td><div class='bar'><div class='fill fill-red' style='width:0.5%'></div></div></td></tr>
+    <tr><td>Change in Priorities / Resources</td><td class='num'>8</td><td class='num'>44.4%</td><td><div class='bar'><div class='fill fill-red' style='width:44.4%'></div></div></td></tr>
+<tr><td>No Decision / Status Quo Maintained</td><td class='num'>4</td><td class='num'>22.2%</td><td><div class='bar'><div class='fill fill-red' style='width:22.2%'></div></div></td></tr>
+<tr><td>Operational / Administrative Closure</td><td class='num'>2</td><td class='num'>11.1%</td><td><div class='bar'><div class='fill fill-red' style='width:11.1%'></div></div></td></tr>
+<tr><td>Product Misalignment</td><td class='num'>2</td><td class='num'>11.1%</td><td><div class='bar'><div class='fill fill-red' style='width:11.1%'></div></div></td></tr>
+<tr><td>Pricing / Value Concerns</td><td class='num'>1</td><td class='num'>5.6%</td><td><div class='bar'><div class='fill fill-red' style='width:5.6%'></div></div></td></tr>
+<tr><td>Budget Constraints</td><td class='num'>1</td><td class='num'>5.6%</td><td><div class='bar'><div class='fill fill-red' style='width:5.6%'></div></div></td></tr>
 
   </table>
 
-  <h2 data-en="Disqualified Leads &mdash; AI Lead Score" data-ru="Disqualified &mdash; AI Lead Score">Disqualified Leads -- AI Lead Score</h2>
+  <h2 data-en="Lost orders by domain (leads + deals)" data-ru="&#1055;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1085;&#1099;&#1077; &#1087;&#1086; &#1076;&#1086;&#1084;&#1077;&#1085;&#1072;&#1084; (&#1083;&#1080;&#1076;&#1099; + &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;)">Lost orders by domain (leads + deals)</h2>
   <table>
     <tr>
-      <th data-en="AI Score" data-ru="AI &#1086;&#1094;&#1077;&#1085;&#1082;&#1072;">AI Score</th>
-      <th class="num" data-en="Count" data-ru="&#1050;&#1086;&#1083;-&#1074;&#1086;">Count</th>
-      <th class="num" data-en="% of DQ" data-ru="% &#1086;&#1090; DQ">% of DQ</th>
+      <th data-en="Domain" data-ru="&#1044;&#1086;&#1084;&#1077;&#1085;">Domain</th>
+      <th class="num" data-en="Lost orders" data-ru="&#1055;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1085;&#1099;&#1093;">Lost orders</th>
+      <th class="num" data-en="% of total" data-ru="% &#1086;&#1090; &#1074;&#1089;&#1077;&#1093;">% of total</th>
+      <th data-en="Distribution" data-ru="&#1056;&#1072;&#1089;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077;">Distribution</th>
     </tr>
-    <tr><td><span class='badge' style='background:#64748b'>(none)</span></td><td class='num'>124</td><td class='num'>79%</td></tr>
-<tr><td><span class='badge' style='background:#dc2626'>SPAM</span></td><td class='num'>22</td><td class='num'>14%</td></tr>
-<tr><td><span class='badge' style='background:#d97706'>COLD</span></td><td class='num'>11</td><td class='num'>7%</td></tr>
-
-  </table>
-
-  <h2 data-en="Disqualified Leads &mdash; Prior Status" data-ru="Disqualified &mdash; Prior Status">Disqualified Leads -- Prior Status</h2>
-  <table>
-    <tr>
-      <th data-en="Prior Status" data-ru="Prior Status">Prior Status</th>
-      <th class="num" data-en="Count" data-ru="&#1050;&#1086;&#1083;-&#1074;&#1086;">Count</th>
-      <th class="num" data-en="% of DQ" data-ru="% &#1086;&#1090; DQ">% of DQ</th>
-    </tr>
-    <tr><td><span data-en="Outreach" data-ru="Outreach (&#1087;&#1077;&#1088;&#1074;&#1099;&#1081; &#1082;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;)">Outreach</span></td><td class='num'>76</td><td class='num'>48.4%</td></tr>
-<tr><td><span data-en="New" data-ru="New (&#1085;&#1086;&#1074;&#1099;&#1081;)">New</span></td><td class='num'>49</td><td class='num'>31.2%</td></tr>
-<tr><td><span data-en="Conversation" data-ru="Conversation (&#1076;&#1080;&#1072;&#1083;&#1086;&#1075;)">Conversation</span></td><td class='num'>23</td><td class='num'>14.6%</td></tr>
-<tr><td><span data-en="Nurturing" data-ru="Nurturing (&#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1074;)">Nurturing</span></td><td class='num'>8</td><td class='num'>5.1%</td></tr>
-<tr><td><span data-en="Negotiations" data-ru="Negotiations (&#1087;&#1077;&#1088;&#1077;&#1075;&#1086;&#1074;&#1086;&#1088;&#1099;)">Negotiations</span></td><td class='num'>1</td><td class='num'>0.6%</td></tr>
+    <tr><td>b2broker.com</td><td class='num'>1524</td><td class='num'>85.7%</td><td><div class='bar'><div class='fill fill-blue' style='width:85.7%'></div></div></td></tr>
+<tr><td>b2core.b2broker.com</td><td class='num'>214</td><td class='num'>12%</td><td><div class='bar'><div class='fill fill-blue' style='width:12%'></div></div></td></tr>
+<tr><td>b2prime.com</td><td class='num'>24</td><td class='num'>1.3%</td><td><div class='bar'><div class='fill fill-blue' style='width:1.3%'></div></div></td></tr>
+<tr><td>eqwire.com</td><td class='num'>5</td><td class='num'>0.3%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.3%'></div></div></td></tr>
+<tr><td>wsa.design</td><td class='num'>5</td><td class='num'>0.3%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.3%'></div></div></td></tr>
+<tr><td>b2copy.b2broker.com</td><td class='num'>4</td><td class='num'>0.2%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.2%'></div></div></td></tr>
+<tr><td>mena-technology.com</td><td class='num'>1</td><td class='num'>0.1%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.1%'></div></div></td></tr>
+<tr><td>b2trader.b2broker.com</td><td class='num'>1</td><td class='num'>0.1%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.1%'></div></div></td></tr>
+<tr><td>lpflow.io</td><td class='num'>1</td><td class='num'>0.1%</td><td><div class='bar'><div class='fill fill-blue' style='width:0.1%'></div></div></td></tr>
 
   </table>
 
   <div class="summary-box">
     <strong data-en="How to read this" data-ru="&#1050;&#1072;&#1082; &#1095;&#1080;&#1090;&#1072;&#1090;&#1100; &#1086;&#1090;&#1095;&#1105;&#1090;">How to read this</strong>
-    <span data-en="Leads and Deals are separate Salesforce entities. A lead is closed when it never advances to deal stage; a deal is closed when an opportunity reaches negotiation and is then lost. The largest Lost Reason bucket points to the most actionable systemic problem at that stage. 'Operational / Administrative Closure' usually means non-business reasons (compliance, doc issues, internal process). 'Budget Constraints' / 'Selected Competitor' point to pricing or positioning. 'No Decision / Status Quo' suggests a weak business case." data-ru="&#1051;&#1080;&#1076;&#1099; &#1080; &#1057;&#1076;&#1077;&#1083;&#1082;&#1080; -- &#1086;&#1090;&#1076;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1089;&#1091;&#1097;&#1085;&#1086;&#1089;&#1090;&#1080; &#1074; Salesforce. &#1051;&#1080;&#1076; &#1079;&#1072;&#1082;&#1088;&#1099;&#1074;&#1072;&#1077;&#1090;&#1089;&#1103;, &#1077;&#1089;&#1083;&#1080; &#1085;&#1077; &#1076;&#1086;&#1093;&#1086;&#1076;&#1080;&#1090; &#1076;&#1086; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080; &#1089;&#1076;&#1077;&#1083;&#1082;&#1080;; &#1089;&#1076;&#1077;&#1083;&#1082;&#1072; &#1079;&#1072;&#1082;&#1088;&#1099;&#1074;&#1072;&#1077;&#1090;&#1089;&#1103;, &#1082;&#1086;&#1075;&#1076;&#1072; opportunity &#1076;&#1086;&#1096;&#1083;&#1086; &#1076;&#1086; &#1087;&#1077;&#1088;&#1077;&#1075;&#1086;&#1074;&#1086;&#1088;&#1086;&#1074; &#1080; &#1087;&#1086;&#1090;&#1077;&#1088;&#1103;&#1085;&#1086;. &#1057;&#1072;&#1084;&#1099;&#1081; &#1082;&#1088;&#1091;&#1087;&#1085;&#1099;&#1081; &#1073;&#1083;&#1086;&#1082; Lost Reason &#1091;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1085;&#1072; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1091;&#1102; &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084;&#1091; &#1085;&#1072; &#1089;&#1086;&#1086;&#1090;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1091;&#1102;&#1097;&#1077;&#1081; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080;. 'Operational / Administrative Closure' &#1086;&#1073;&#1099;&#1095;&#1085;&#1086; &#1079;&#1085;&#1072;&#1095;&#1080;&#1090; &#1085;&#1077;-&#1073;&#1080;&#1079;&#1085;&#1077;&#1089; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1099; (&#1082;&#1086;&#1084;&#1087;&#1083;&#1072;&#1077;&#1085;&#1089;, &#1076;&#1086;&#1082;&#1080;, &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1080;&#1081; &#1087;&#1088;&#1086;&#1094;&#1077;&#1089;&#1089;). 'Budget' / 'Competitor' -- &#1086; &#1094;&#1077;&#1085;&#1077; &#1080;&#1083;&#1080; &#1087;&#1086;&#1079;&#1080;&#1094;&#1080;&#1086;&#1085;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1080;. 'No Decision / Status Quo' -- &#1089;&#1083;&#1072;&#1073;&#1099;&#1081; business case."></span>
+    <span data-en="Leads and Deals are separate Salesforce entities with different reason fields. The largest reason bucket points to the most actionable systemic problem at that stage. For leads, 'Product or Service Mismatch' usually means the lead came from wrong intent; 'Non-ICP / Spam' suggests the qualification filter or top-of-funnel targeting needs adjustment. For deals, 'Operational / Administrative Closure' = compliance/docs/process; 'Budget' / 'Selected Competitor' = pricing or positioning; 'No Decision / Status Quo' = weak business case." data-ru="&#1051;&#1080;&#1076;&#1099; &#1080; &#1057;&#1076;&#1077;&#1083;&#1082;&#1080; -- &#1086;&#1090;&#1076;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1089;&#1091;&#1097;&#1085;&#1086;&#1089;&#1090;&#1080; Salesforce &#1089; &#1088;&#1072;&#1079;&#1085;&#1099;&#1084;&#1080; &#1087;&#1086;&#1083;&#1103;&#1084;&#1080; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;. &#1057;&#1072;&#1084;&#1099;&#1081; &#1082;&#1088;&#1091;&#1087;&#1085;&#1099;&#1081; &#1073;&#1083;&#1086;&#1082; &#1087;&#1088;&#1080;&#1095;&#1080;&#1085;&#1099; &#1091;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1077;&#1090; &#1085;&#1072; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1091;&#1102; &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084;&#1091; &#1085;&#1072; &#1089;&#1086;&#1086;&#1090;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1091;&#1102;&#1097;&#1077;&#1081; &#1089;&#1090;&#1072;&#1076;&#1080;&#1080;. &#1059; &#1083;&#1080;&#1076;&#1086;&#1074; 'Product or Service Mismatch' &#1086;&#1073;&#1099;&#1095;&#1085;&#1086; &#1086;&#1079;&#1085;&#1072;&#1095;&#1072;&#1077;&#1090;: &#1083;&#1080;&#1076; &#1087;&#1088;&#1080;&#1096;&#1105;&#1083; &#1085;&#1077; &#1089; &#1090;&#1077;&#1084; &#1080;&#1085;&#1090;&#1077;&#1085;&#1090;&#1086;&#1084;; 'Non-ICP / Spam' -- &#1085;&#1091;&#1078;&#1077;&#1085; &#1080;&#1085;&#1086;&#1081; &#1092;&#1080;&#1083;&#1100;&#1090;&#1088; &#1082;&#1074;&#1072;&#1083;&#1080;&#1092;&#1080;&#1082;&#1072;&#1094;&#1080;&#1080; &#1080;&#1083;&#1080; &#1090;&#1072;&#1088;&#1075;&#1077;&#1090;&#1080;&#1085;&#1075; &#1085;&#1072; top-of-funnel. &#1059; &#1089;&#1076;&#1077;&#1083;&#1086;&#1082; 'Operational / Administrative Closure' = compliance/&#1076;&#1086;&#1082;&#1080;/&#1087;&#1088;&#1086;&#1094;&#1077;&#1089;&#1089;; 'Budget' / 'Selected Competitor' = &#1094;&#1077;&#1085;&#1072; &#1080;&#1083;&#1080; &#1087;&#1086;&#1079;&#1080;&#1094;&#1080;&#1086;&#1085;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;; 'No Decision / Status Quo' = &#1089;&#1083;&#1072;&#1073;&#1099;&#1081; business case."></span>
   </div>
 
-  <div class="footer"><span data-en="Generated" data-ru="&#1057;&#1075;&#1077;&#1085;&#1077;&#1088;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1086;">Generated</span> 2026-04-27 15:25 &middot; Roistat project 187940 &middot; Salesforce CRM</div>
+  <div class="footer"><span data-en="Generated" data-ru="&#1057;&#1075;&#1077;&#1085;&#1077;&#1088;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1086;">Generated</span> 2026-04-27 16:21 &middot; Roistat project 187940 &middot; Salesforce CRM</div>
 </div>
 
 <script>
