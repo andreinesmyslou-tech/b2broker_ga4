@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2Broker - Lost Reasons Report</title>
+<style>
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:#f1f5f9; color:#0f172a; margin:0; padding:20px; }
+.container { max-width:1100px; margin:0 auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+h1 { font-size:26px; margin:0 0 4px 0; color:#0f172a; }
+h1 .brand { color:#1e40af; }
+h1 .brand-green { color:#059669; }
+.period { color:#475569; font-size:14px; margin-bottom:24px; }
+h2 { font-size:18px; color:#1e293b; border-bottom:2px solid #e2e8f0; padding-bottom:8px; margin:36px 0 16px 0; }
+.kpi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:30px; }
+.kpi { background:#f8fafc; border-left:4px solid #1e40af; padding:14px 16px; border-radius:8px; }
+.kpi .lbl { font-size:12px; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
+.kpi .val { font-size:26px; font-weight:700; color:#0f172a; margin-top:4px; }
+.kpi .sub { font-size:12px; color:#475569; margin-top:2px; }
+table { width:100%; border-collapse:collapse; margin:16px 0 28px 0; font-size:13px; }
+th { background:#f1f5f9; text-align:left; padding:10px 12px; font-weight:600; color:#475569; border-bottom:2px solid #e2e8f0; }
+th.num, td.num { text-align:right; }
+td { padding:9px 12px; border-bottom:1px solid #f1f5f9; }
+tr:hover { background:#f8fafc; }
+.bar { width:120px; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; }
+.bar .fill { height:100%; background:linear-gradient(90deg,#dc2626,#ef4444); border-radius:4px; }
+.badge { display:inline-block; padding:2px 8px; border-radius:4px; color:#fff; font-size:11px; font-weight:600; }
+.note { background:#fef9c3; border-left:4px solid #ca8a04; padding:10px 14px; font-size:13px; border-radius:6px; color:#713f12; margin-bottom:20px; }
+.summary-box { background:#eff6ff; border-left:4px solid #2563eb; padding:14px 16px; border-radius:6px; margin-top:18px; font-size:14px; color:#1e3a8a; }
+.summary-box strong { display:block; margin-bottom:6px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; }
+.footer { margin-top:30px; padding-top:14px; border-top:1px solid #e2e8f0; color:#94a3b8; font-size:11px; text-align:right; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1><span class="brand">B2</span><span class="brand-green">BROKER</span> &mdash; Lost Reasons Report</h1>
+  <div class="period">Period: 2026-01-01 -- 2026-04-27 (year-to-date)</div>
+
+  <div class="note">
+    <strong>What this report shows:</strong> distribution of lost / disqualified leads and deals by reason.
+    <b>Closed Lost</b> = deals (opportunities) that reached the negotiation stage and were lost; they have a populated <code>Lost Reason</code> field.
+    <b>Disqualified</b> = leads filtered out before the deal stage; they don't have <code>Lost Reason</code>, but we show them by AI Lead Score and Prior Status.
+    Source: Roistat / Salesforce CRM, project 187940. All numbers reflect orders with <code>update_date</code> in the period.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="lbl">Closed Lost deals</div>
+      <div class="val">233</div>
+      <div class="sub">deals lost in negotiation</div>
+    </div>
+    <div class="kpi" style="border-left-color:#dc2626">
+      <div class="lbl">Lost revenue (sum)</div>
+      <div class="val">$1,007,750</div>
+      <div class="sub">opportunity amount of Closed Lost</div>
+    </div>
+    <div class="kpi" style="border-left-color:#d97706">
+      <div class="lbl">Disqualified leads</div>
+      <div class="val">157</div>
+      <div class="sub">filtered out before deal stage</div>
+    </div>
+  </div>
+
+  <h2>Closed Lost by Lost Reason</h2>
+  <table>
+    <tr><th>Lost Reason</th><th class="num">Deals</th><th class="num">% of lost</th><th class="num">Amount</th><th class="num">% of $</th><th>Distribution</th></tr>
+    <tr><td>Operational / Administrative Closure</td><td class='num'>99</td><td class='num'>42.5%</td><td class='num'>$276,750</td><td class='num'>27.5%</td><td><div class='bar'><div class='fill' style='width:42.5%'></div></div></td></tr><tr><td>No Decision / Status Quo Maintained</td><td class='num'>44</td><td class='num'>18.9%</td><td class='num'>$279,000</td><td class='num'>27.7%</td><td><div class='bar'><div class='fill' style='width:18.9%'></div></div></td></tr><tr><td>Change in Priorities / Resources</td><td class='num'>34</td><td class='num'>14.6%</td><td class='num'>$104,000</td><td class='num'>10.3%</td><td><div class='bar'><div class='fill' style='width:14.6%'></div></div></td></tr><tr><td>Product Misalignment</td><td class='num'>14</td><td class='num'>6%</td><td class='num'>$132,000</td><td class='num'>13.1%</td><td><div class='bar'><div class='fill' style='width:6%'></div></div></td></tr><tr><td>Budget Constraints</td><td class='num'>12</td><td class='num'>5.2%</td><td class='num'>$15,000</td><td class='num'>1.5%</td><td><div class='bar'><div class='fill' style='width:5.2%'></div></div></td></tr><tr><td>Pricing / Value Concerns</td><td class='num'>10</td><td class='num'>4.3%</td><td class='num'>$150,500</td><td class='num'>14.9%</td><td><div class='bar'><div class='fill' style='width:4.3%'></div></div></td></tr><tr><td>Selected Competitor / Existing Vendor</td><td class='num'>7</td><td class='num'>3%</td><td class='num'>$35,500</td><td class='num'>3.5%</td><td><div class='bar'><div class='fill' style='width:3%'></div></div></td></tr><tr><td>Duplicate Opportunity</td><td class='num'>6</td><td class='num'>2.6%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:2.6%'></div></div></td></tr><tr><td>Lack of business case/need</td><td class='num'>3</td><td class='num'>1.3%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:1.3%'></div></div></td></tr><tr><td>Satisfied with current solution</td><td class='num'>2</td><td class='num'>0.9%</td><td class='num'>$7,500</td><td class='num'>0.7%</td><td><div class='bar'><div class='fill' style='width:0.9%'></div></div></td></tr><tr><td>No Internal Capacity</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr><tr><td>Budget</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>$0</td><td class='num'>0%</td><td><div class='bar'><div class='fill' style='width:0.4%'></div></div></td></tr>
+  </table>
+
+  <h2>Disqualified Leads &mdash; AI Lead Score breakdown</h2>
+  <table>
+    <tr><th>AI Score</th><th class="num">Count</th><th class="num">% of DQ</th></tr>
+    <tr><td><span class='badge' style='background:#64748b'>(none)</span></td><td class='num'>124</td><td class='num'>79%</td></tr><tr><td><span class='badge' style='background:#dc2626'>SPAM</span></td><td class='num'>22</td><td class='num'>14%</td></tr><tr><td><span class='badge' style='background:#d97706'>COLD</span></td><td class='num'>11</td><td class='num'>7%</td></tr>
+  </table>
+
+  <h2>Disqualified Leads &mdash; Prior Status (where they were rejected)</h2>
+  <table>
+    <tr><th>Prior Status</th><th class="num">Count</th><th class="num">% of DQ</th></tr>
+    <tr><td>Outreach</td><td class='num'>76</td><td class='num'>48.4%</td></tr><tr><td>New</td><td class='num'>49</td><td class='num'>31.2%</td></tr><tr><td>Conversation</td><td class='num'>23</td><td class='num'>14.6%</td></tr><tr><td>Nurturing</td><td class='num'>8</td><td class='num'>5.1%</td></tr><tr><td>Negotiations</td><td class='num'>1</td><td class='num'>0.6%</td></tr>
+  </table>
+
+  <div class="summary-box">
+    <strong>How to read this</strong>
+    The largest "Lost Reason" bucket points to the most actionable systemic problem. "Operational / Administrative Closure" usually means the deal died for non-business reasons (compliance, doc issues, internal process). "Budget Constraints" / "Selected Competitor" point to pricing or positioning. "No Decision / Status Quo" suggests sales-cycle pressure or weak business case.
+    Disqualified-by-AI-Score shows how many leads the AI screen catches as SPAM/COLD; if (none) is the largest bucket, AI scoring is not consistently filled. Disqualified-by-Prior-Status shows where in the funnel they fell out.
+  </div>
+
+  <div class="footer">Generated 2026-04-27 14:58 &middot; Roistat project 187940 &middot; Salesforce CRM source</div>
+</div>
+</body>
+</html>
